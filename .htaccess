@@ -3,12 +3,18 @@ RewriteEngine On
 RewriteBase /
 
 # Set default directory index files
-DirectoryIndex index.php index.html
+DirectoryIndex index.html index.php
 
 # Redirect product pages
 RewriteRule ^product/([a-zA-Z0-9-]+)/?$ product.php?id=$1 [L,QSA]
 
-# Clean URLs for main pages (optional - remove .php extension)
+# Clean URLs - remove .html extension (optional)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L,QSA]
+
+# Fallback to .php for API endpoints and legacy pages
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f

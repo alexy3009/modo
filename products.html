@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Разгледайте нашите колекции от луксозни мебели - дивани, спални, столове, маси. Ръчна изработка, премиум качество.">
+    <meta name="keywords" content="мебели, дивани, спални, столове, маси, луксозни мебели, ръчна изработка, Петрич">
+
+    <title>Продукти - MODO Mebel</title>
+
+    <link rel="icon" href="/icon.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17599341656"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-17599341656');
+    </script>
+</head>
+<body>
+    <nav id="main-nav" class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/">
+                    <img src="/modoLogo.png" alt="MODO Mebel Logo" class="logo-img">
+                    <span class="logo-text">MODO Mebel</span>
+                </a>
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/" class="nav-link">Начало</a></li>
+                <li><a href="/products.html" class="nav-link active">Продукти</a></li>
+                <li><a href="/#manufacturing" class="nav-link">Производство</a></li>
+                <li><a href="/about.html" class="nav-link">За нас</a></li>
+                <li><a href="/contact.html" class="nav-link">Контакт</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="language-switcher" id="language-switcher">
+                    <button class="lang-btn active" data-lang="bg">BG</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="el">EL</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 100px;">
+        <section class="products-section">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="/">Начало</a> &gt;
+                    <span>Продукти</span>
+                </nav>
+
+                <div class="section-header">
+                    <h1 class="section-title" id="page-title">Всички продукти</h1>
+                    <p class="section-subtitle">
+                        Разгледайте нашите колекции, създадени с внимание към всеки детайл
+                    </p>
+                </div>
+
+                <div class="category-filter">
+                    <a href="/products.html" class="filter-btn" data-category="all">Всички</a>
+                    <a href="/products.html?category=divani" class="filter-btn" data-category="divani">Дивани</a>
+                    <a href="/products.html?category=spalni" class="filter-btn" data-category="spalni">Спални</a>
+                    <a href="/products.html?category=stolove" class="filter-btn" data-category="stolove">Столове</a>
+                    <a href="/products.html?category=masi" class="filter-btn" data-category="masi">Маси</a>
+                </div>
+
+                <div id="products-grid" class="products-grid">
+                    <div class="loading-spinner">Зареждане на продукти...</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="/modoLogo.png" alt="MODO Mebel Logo" class="footer-logo-img">
+                        <h3 class="footer-brand">MODO Mebel</h3>
+                    </div>
+                    <p class="footer-description">
+                        Производители на висококачествени луксозни мебели за вашия дом. Всеки продукт е създаден с любов и внимание към детайлите.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Навигация</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Начало</a></li>
+                        <li><a href="/products.html">Продукти</a></li>
+                        <li><a href="/#manufacturing">Производство</a></li>
+                        <li><a href="/about.html">За нас</a></li>
+                        <li><a href="/contact.html">Контакт</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Контакт</h4>
+                    <ul class="footer-contacts">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Петрич, Ильо Войвода №50
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            +359 888822839
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <path d="M22 6l-10 7L2 6"/>
+                            </svg>
+                            bfoam.office@gmail.com
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Категории</h4>
+                    <ul class="footer-links">
+                        <li><a href="/products.html?category=divani">Дивани</a></li>
+                        <li><a href="/products.html?category=spalni">Спални</a></li>
+                        <li><a href="/products.html?category=stolove">Столове</a></li>
+                        <li><a href="/products.html?category=masi">Маси</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">
+                    © 2025 MODO Mebel. Всички права запазени.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p class="cookie-text">
+                Използваме бисквитки за да подобрим вашето изживяване на сайта. Като продължите да използвате сайта, вие се съгласявате с нашата политика за бисквитки.
+            </p>
+            <div class="cookie-actions">
+                <button class="btn btn-primary btn-sm" id="cookie-accept">Приемам</button>
+                <button class="btn btn-outline btn-sm" id="cookie-decline">Отказвам</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/utils.js"></script>
+    <script src="/js/animations.js"></script>
+    <script src="/js/cookies.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/js/data-loader.js"></script>
+    <script>
+        document.getElementById('mobile-menu-toggle')?.addEventListener('click', function() {
+            document.getElementById('nav-menu')?.classList.toggle('active');
+        });
+
+        const cookieAccept = document.getElementById('cookie-accept');
+        const cookieDecline = document.getElementById('cookie-decline');
+        if (cookieAccept) cookieAccept.addEventListener('click', CookieManager.accept);
+        if (cookieDecline) cookieDecline.addEventListener('click', CookieManager.decline);
+
+        CookieManager.showBanner();
+        observeElements();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category') || 'all';
+
+        const categoryNames = {
+            'all': 'Всички продукти',
+            'divani': 'Дивани',
+            'spalni': 'Спални',
+            'stolove': 'Столове',
+            'masi': 'Маси'
+        };
+
+        document.getElementById('page-title').textContent = categoryNames[category] || 'Всички продукти';
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            if (btn.dataset.category === category) {
+                btn.classList.add('active');
+            }
+        });
+
+        if (typeof DataLoader !== 'undefined') {
+            DataLoader.loadProductsPageData(category === 'all' ? null : category);
+        }
+    </script>
+</body>
+</html>
