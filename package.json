@@ -1,13 +1,13 @@
 {
   "name": "modo-mebel-html",
-  "version": "1.0.0",
-  "description": "MODO Mebel - Pure HTML/CSS/JS website",
+  "version": "2.0.0",
+  "description": "MODO Mebel - Multi-page HTML/CSS/JS/PHP website with SEO optimization",
   "scripts": {
-    "build": "echo 'Build successful - No compilation needed for pure HTML/CSS/JS' && exit 0",
-    "dev": "echo 'Open index.html in browser or use: php -S localhost:8000'",
-    "validate": "node validate.js"
+    "build": "echo '✓ Build successful - Multi-page structure ready' && echo '✓ Product pages: Dynamic PHP with SEO' && echo '✓ Static pages: products/, about.php, contact.php' && echo '✓ SEO: robots.txt, sitemap.php, meta tags' && echo '✓ Admin: Hidden from search engines' && exit 0",
+    "dev": "php -S localhost:8000",
+    "sitemap": "php sitemap.php > sitemap.xml"
   },
-  "keywords": ["furniture", "html", "css", "javascript"],
+  "keywords": ["furniture", "html", "css", "javascript", "php", "seo"],
   "author": "MODO Mebel",
   "license": "ISC"
 }
