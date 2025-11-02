@@ -1,13 +1,21 @@
+import { supabase } from './supabase-client.js';
+
 const DataLoader = {
     async loadFeaturedProducts() {
         try {
-            const response = await fetch('/public/api/products.php?featured=1&limit=6');
-            const data = await response.json();
+            const { data, error } = await supabase
+                .from('products')
+                .select('*')
+                .eq('featured', true)
+                .order('created_at', { ascending: false })
+                .limit(6);
 
-            if (data.success && data.products) {
-                return data.products;
+            if (error) {
+                console.error('Error loading featured products:', error);
+                return [];
             }
-            return [];
+
+            return data || [];
         } catch (error) {
             console.error('Error loading featured products:', error);
             return [];
@@ -16,17 +24,23 @@ const DataLoader = {
 
     async loadAllProducts(category = null) {
         try {
-            const url = category && category !== 'all'
-                ? `/public/api/products.php?category=${encodeURIComponent(category)}`
-                : '/public/api/products.php';
+            let query = supabase
+                .from('products')
+                .select('*')
+                .order('created_at', { ascending: false });
 
-            const response = await fetch(url);
-            const data = await response.json();
-
-            if (data.success && data.products) {
-                return data.products;
+            if (category && category !== 'all') {
+                query = query.eq('category', category);
             }
-            return [];
+
+            const { data, error } = await query;
+
+            if (error) {
+                console.error('Error loading products:', error);
+                return [];
+            }
+
+            return data || [];
         } catch (error) {
             console.error('Error loading products:', error);
             return [];
@@ -35,13 +49,23 @@ const DataLoader = {
 
     async loadSiteMetrics() {
         try {
-            const response = await fetch('/public/api/site-metrics.php');
-            const data = await response.json();
+            const { data, error } = await supabase
+                .from('site_metrics')
+                .select('*')
+                .order('updated_at', { ascending: false })
+                .limit(1)
+                .maybeSingle();
 
-            if (data.success && data.metrics) {
-                return data.metrics;
+            if (error) {
+                console.error('Error loading site metrics:', error);
+                return {
+                    years_experience: 15,
+                    satisfied_clients: 500,
+                    handmade_percentage: 100
+                };
             }
-            return {
+
+            return data || {
                 years_experience: 15,
                 satisfied_clients: 500,
                 handmade_percentage: 100
@@ -57,8 +81,8 @@ const DataLoader = {
     },
 
     renderProduct(product) {
-        const imageUrls = JSON.parse(product.image_urls || '[]');
-        const coverImage = imageUrls.length > 0 ? imageUrls[0] : '/modoLogo.png';
+        const imageUrls = Array.isArray(product.image_urls) ? product.image_urls : [];
+        const coverImage = imageUrls.length > 0 ? imageUrls[0] : '/public/modoLogo.png';
         const priceDisplay = product.show_price && product.price ? product.price : 'По запитване';
 
         return `
@@ -140,3 +164,5 @@ const DataLoader = {
         this.updateMetrics(metrics);
     }
 };
+
+export default DataLoader;

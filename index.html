@@ -9,12 +9,12 @@
 
     <meta property="og:title" content="MODO Mebel - Луксозни мебели с ръчна изработка">
     <meta property="og:description" content="Създаваме мебели с любов и майсторство. Всеки продукт е изработен ръчно в нашата работилница.">
-    <meta property="og:image" content="/modoLogo.png">
+    <meta property="og:image" content="/public/modoLogo.png">
     <meta property="og:type" content="website">
 
     <title>MODO Mebel - Луксозни мебели с ръчна изработка</title>
 
-    <link rel="icon" href="/icon.png">
+    <link rel="icon" href="/public/icon.png">
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/animations.css">
@@ -34,7 +34,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="/">
-                    <img src="/modoLogo.png" alt="MODO Mebel Logo" class="logo-img">
+                    <img src="/public/modoLogo.png" alt="MODO Mebel Logo" class="logo-img">
                     <span class="logo-text">MODO Mebel</span>
                 </a>
             </div>
@@ -347,7 +347,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <div class="footer-logo">
-                        <img src="/modoLogo.png" alt="MODO Mebel Logo" class="footer-logo-img">
+                        <img src="/public/modoLogo.png" alt="MODO Mebel Logo" class="footer-logo-img">
                         <h3 class="footer-brand">MODO Mebel</h3>
                     </div>
                     <p class="footer-description">
@@ -443,7 +443,10 @@
     <script src="/js/animations.js"></script>
     <script src="/js/cookies.js"></script>
     <script src="/js/toast.js"></script>
-    <script src="/js/data-loader.js"></script>
+    <script type="module">
+        import DataLoader from '/js/data-loader.js';
+        window.DataLoader = DataLoader;
+    </script>
     <script>
         document.getElementById('mobile-menu-toggle')?.addEventListener('click', function() {
             document.getElementById('nav-menu')?.classList.toggle('active');

@@ -2,12 +2,26 @@
   "name": "modo-mebel-html",
   "version": "2.0.0",
   "description": "MODO Mebel - Multi-page HTML/CSS/JS/PHP website with SEO optimization",
+  "type": "module",
   "scripts": {
-    "build": "echo '✓ Build successful - Multi-page structure ready' && echo '✓ Product pages: Dynamic PHP with SEO' && echo '✓ Static pages: products/, about.php, contact.php' && echo '✓ SEO: robots.txt, sitemap.php, meta tags' && echo '✓ Admin: Hidden from search engines' && exit 0",
-    "dev": "php -S localhost:8000",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "sitemap": "php sitemap.php > sitemap.xml"
   },
-  "keywords": ["furniture", "html", "css", "javascript", "php", "seo"],
+  "keywords": [
+    "furniture",
+    "html",
+    "css",
+    "javascript",
+    "php",
+    "seo"
+  ],
   "author": "MODO Mebel",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.78.0",
+    "express": "^5.1.0",
+    "vite": "^7.1.12"
+  }
 }
