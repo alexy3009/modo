@@ -1,0 +1,405 @@
+<?php
+require_once __DIR__ . '/public/api/config.php';
+
+// Fetch site metrics
+try {
+    $stmt = $pdo->query("SELECT * FROM site_metrics LIMIT 1");
+    $metrics = $stmt->fetch(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    error_log("Error fetching metrics: " . $e->getMessage());
+    $metrics = [
+        'years_experience' => 15,
+        'satisfied_clients' => 500,
+        'handmade_percentage' => 100
+    ];
+}
+
+$current_page = 'about';
+?>
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="За MODO Mebel - Производители на висококачествени луксозни мебели с над <?php echo $metrics['years_experience']; ?> години опит. Нашата история, мисия и ценности.">
+    <meta name="keywords" content="за нас, MODO Mebel, история, производство, мебели, Петрич">
+
+    <title>За нас - MODO Mebel</title>
+
+    <link rel="icon" href="/icon.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17599341656"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-17599341656');
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="main-nav" class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/">
+                    <img src="/modoLogo.png" alt="MODO Mebel Logo" class="logo-img">
+                    <span class="logo-text">MODO Mebel</span>
+                </a>
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/" class="nav-link">Начало</a></li>
+                <li><a href="/products.php" class="nav-link">Продукти</a></li>
+                <li><a href="/#manufacturing" class="nav-link">Производство</a></li>
+                <li><a href="/about.php" class="nav-link active">За нас</a></li>
+                <li><a href="/contact.php" class="nav-link">Контакт</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="language-switcher" id="language-switcher">
+                    <button class="lang-btn active" data-lang="bg">BG</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="el">EL</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main style="padding-top: 100px;">
+        <!-- Hero Section -->
+        <section class="about-hero-section">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="/">Начало</a> &gt;
+                    <span>За нас</span>
+                </nav>
+
+                <div class="about-hero-content">
+                    <div class="about-hero-text animate-on-scroll">
+                        <h1 class="section-title">Нашата история</h1>
+                        <p class="hero-description">
+                            MODO Mebel е семейна фирма, която от <?php echo $metrics['years_experience']; ?> години създава мебели с любов, страст и внимание към всеки детайл. Започнахме като малка работилница с мечтата да правим нещо уникално и качествено, и днес сме горди с това, което постигнахме.
+                        </p>
+                    </div>
+                    <div class="about-hero-image animate-on-scroll">
+                        <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="MODO Mebel работилница">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="about-stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card-large animate-on-scroll">
+                        <h3 class="stat-number"><?php echo $metrics['years_experience']; ?>+</h3>
+                        <p class="stat-label">Години опит в производството на мебели</p>
+                    </div>
+                    <div class="stat-card-large animate-on-scroll">
+                        <h3 class="stat-number"><?php echo $metrics['satisfied_clients']; ?>+</h3>
+                        <p class="stat-label">Доволни клиенти в цяла България</p>
+                    </div>
+                    <div class="stat-card-large animate-on-scroll">
+                        <h3 class="stat-number"><?php echo $metrics['handmade_percentage']; ?>%</h3>
+                        <p class="stat-label">Ръчна изработка на всеки продукт</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section class="our-story-section">
+            <div class="container">
+                <div class="story-content">
+                    <div class="story-image animate-on-scroll">
+                        <img src="https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Нашата работилница">
+                    </div>
+                    <div class="story-text animate-on-scroll">
+                        <h2 class="section-title">Как всичко започна</h2>
+                        <p class="story-paragraph">
+                            Всичко започна като малка семейна работилница в град Петрич. С минимални ресурси, но с огромна страст към майсторството, започнахме да създаваме мебели, които отразяват нашата визия за качество и естетика.
+                        </p>
+                        <p class="story-paragraph">
+                            През годините нарастнахме и се развихме, но никога не забравихме основните си ценности - качество, внимание към детайлите и индивидуален подход към всеки клиент. Всеки продукт, който излиза от нашата работилница, е създаден с любов и професионализъм.
+                        </p>
+                        <p class="story-paragraph">
+                            Днес MODO Mebel е признато име в индустрията, но за нас всеки клиент остава на първо място. Продължаваме да следваме традицията на ръчна изработка, комбинирана с модерни технологии и дизайн.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Values Section -->
+        <section class="values-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Нашите ценности</h2>
+                    <p class="section-subtitle">
+                        Това, което ни прави различни и в което вярваме
+                    </p>
+                </div>
+
+                <div class="values-grid">
+                    <div class="value-card animate-on-scroll">
+                        <div class="value-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l2 7h7l-5.5 4 2 7-5.5-4-5.5 4 2-7-5.5-4h7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Качество</h3>
+                        <p class="value-description">
+                            Използваме само най-добрите материали и технологии. Всеки продукт преминава строг контрол на качеството преди да стигне до вас.
+                        </p>
+                    </div>
+
+                    <div class="value-card animate-on-scroll">
+                        <div class="value-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Индивидуален подход</h3>
+                        <p class="value-description">
+                            Всеки клиент е уникален за нас. Работим заедно с вас, за да създадем мебели, които отговарят на вашите желания и нужди.
+                        </p>
+                    </div>
+
+                    <div class="value-card animate-on-scroll">
+                        <div class="value-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Надеждност</h3>
+                        <p class="value-description">
+                            Нашите мебели са създадени да издържат на времето. Предлагаме гаранция и пълна поддръжка на всички наши продукти.
+                        </p>
+                    </div>
+
+                    <div class="value-card animate-on-scroll">
+                        <div class="value-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Локално производство</h3>
+                        <p class="value-description">
+                            Горди сме, че всеки наш продукт е изработен тук, в България. Подкрепяме местната икономика и работна сила.
+                        </p>
+                    </div>
+
+                    <div class="value-card animate-on-scroll">
+                        <div class="value-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Иновация</h3>
+                        <p class="value-description">
+                            Комбинираме традиционни техники с най-новите технологии и дизайнерски тенденции.
+                        </p>
+                    </div>
+
+                    <div class="value-card animate-on-scroll">
+                        <div class="value-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Устойчивост</h3>
+                        <p class="value-description">
+                            Грижим се за околната среда. Използваме екологични материали и отговорни производствени практики.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Manufacturing Process Section -->
+        <section class="process-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Производствен процес</h2>
+                    <p class="section-subtitle">
+                        От идея до готов продукт - как създаваме вашите мебели
+                    </p>
+                </div>
+
+                <div class="process-timeline">
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Консултация и дизайн</h3>
+                            <p class="step-description">
+                                Запознаваме се с вашите желания, измерваме пространството и създаваме индивидуален дизайн.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Подбор на материали</h3>
+                            <p class="step-description">
+                                Избираме най-качествените материали - дървесина, текстил, тапицерия, които отговарят на вашите изисквания.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Производство</h3>
+                            <p class="step-description">
+                                Нашите майстори ръчно изработват всеки елемент с внимание към най-малкия детайл.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Контрол на качеството</h3>
+                            <p class="step-description">
+                                Всеки продукт преминава строга проверка преди да бъде одобрен за доставка.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Доставка и монтаж</h3>
+                            <p class="step-description">
+                                Доставяме и монтираме мебелите във вашия дом с грижа и професионализъм.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content animate-on-scroll">
+                    <h2 class="cta-title">Готови ли сте да създадем нещо уникално заедно?</h2>
+                    <p class="cta-description">
+                        Свържете се с нас днес и нека започнем да работим по вашата мечтана мебел.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="/contact.php" class="btn btn-primary btn-large">
+                            <span>Свържете се с нас</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="/products.php" class="btn btn-outline btn-large">
+                            <span>Разгледайте продуктите</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="/modoLogo.png" alt="MODO Mebel Logo" class="footer-logo-img">
+                        <h3 class="footer-brand">MODO Mebel</h3>
+                    </div>
+                    <p class="footer-description">
+                        Производители на висококачествени луксозни мебели за вашия дом. Всеки продукт е създаден с любов и внимание към детайлите.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Навигация</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Начало</a></li>
+                        <li><a href="/products.php">Продукти</a></li>
+                        <li><a href="/#manufacturing">Производство</a></li>
+                        <li><a href="/about.php">За нас</a></li>
+                        <li><a href="/contact.php">Контакт</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Контакт</h4>
+                    <ul class="footer-contacts">
+                        <li>Петрич, Ильо Войвода №50</li>
+                        <li>+359 888822839</li>
+                        <li>bfoam.office@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">
+                    © 2025 MODO Mebel. Всички права запазени.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p class="cookie-text">
+                Използваме бисквитки за да подобрим вашето изживяване на сайта. Като продължите да използвате сайта, вие се съгласявате с нашата политика за бисквитки.
+            </p>
+            <div class="cookie-actions">
+                <button class="btn btn-primary btn-sm" id="cookie-accept">Приемам</button>
+                <button class="btn btn-outline btn-sm" id="cookie-decline">Отказвам</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/animations.js"></script>
+    <script src="/js/cookies.js"></script>
+    <script src="/js/toast.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-toggle')?.addEventListener('click', function() {
+            document.getElementById('nav-menu')?.classList.toggle('active');
+        });
+
+        // Cookie banner
+        const cookieAccept = document.getElementById('cookie-accept');
+        const cookieDecline = document.getElementById('cookie-decline');
+        if (cookieAccept) cookieAccept.addEventListener('click', CookieManager.accept);
+        if (cookieDecline) cookieDecline.addEventListener('click', CookieManager.decline);
+
+        CookieManager.showBanner();
+
+        // Initialize animations
+        observeElements();
+    </script>
+</body>
+</html>
